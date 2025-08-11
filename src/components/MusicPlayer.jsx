@@ -1,4 +1,3 @@
-```jsx
 import React, { useState, useRef, useEffect } from 'react';
 import { Play, Pause, SkipBack, SkipForward, Volume2, VolumeX, Shuffle, Repeat } from 'lucide-react';
 import AudioVisualizer from './AudioVisualizer';
@@ -268,4 +267,3 @@ const MusicPlayer = () => {
 };
 
 export default MusicPlayer;
-```
