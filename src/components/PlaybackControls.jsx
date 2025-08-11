@@ -1,4 +1,3 @@
-```jsx
 import React from 'react';
 import { Play, Pause, SkipBack, SkipForward, Volume2 } from 'lucide-react';
 
@@ -89,4 +88,3 @@ const PlaybackControls = ({
 };
 
 export default PlaybackControls;
-```
