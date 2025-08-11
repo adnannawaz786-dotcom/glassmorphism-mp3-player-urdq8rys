@@ -1,0 +1,135 @@
+```html
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="A beautiful glassmorphism-styled MP3 player with audio visualizer" />
+    <meta name="theme-color" content="#1e1b4b" />
+    
+    <!-- Preconnect to improve font loading performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Google Fonts for better typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <title>Glassmorphism MP3 Player</title>
+    
+    <style>
+      /* Prevent flash of unstyled content */
+      body {
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+        margin: 0;
+        padding: 0;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+        overflow-x: hidden;
+      }
+      
+      /* Loading spinner */
+      .loading-spinner {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 40px;
+        height: 40px;
+        border: 3px solid rgba(255, 255, 255, 0.3);
+        border-top: 3px solid rgba(255, 255, 255, 0.8);
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+        z-index: 1000;
+      }
+      
+      @keyframes spin {
+        0% { transform: translate(-50%, -50%) rotate(0deg); }
+        100% { transform: translate(-50%, -50%) rotate(360deg); }
+      }
+      
+      /* Hide loading spinner when app loads */
+      .app-loaded .loading-spinner {
+        display: none;
+      }
+      
+      /* Ensure proper mobile viewport handling */
+      @media (max-width: 768px) {
+        body {
+          font-size: 14px;
+        }
+      }
+      
+      /* Glassmorphism background elements */
+      .bg-blur::before {
+        content: '';
+        position: fixed;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(circle at 25% 25%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
+                    radial-gradient(circle at 75% 75%, rgba(255, 119, 198, 0.3) 0%, transparent 50%);
+        animation: float 20s ease-in-out infinite;
+        z-index: -1;
+      }
+      
+      @keyframes float {
+        0%, 100% { transform: translate(0, 0) rotate(0deg); }
+        33% { transform: translate(30px, -30px) rotate(120deg); }
+        66% { transform: translate(-20px, 20px) rotate(240deg); }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Background blur elements -->
+    <div class="bg-blur"></div>
+    
+    <!-- Loading spinner -->
+    <div class="loading-spinner"></div>
+    
+    <!-- React app root -->
+    <div id="root"></div>
+    
+    <!-- Vite development script -->
+    <script type="module" src="/src/main.jsx"></script>
+    
+    <!-- Service Worker registration for PWA capabilities -->
+    <script>
+      // Register service worker for offline functionality
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/sw.js')
+            .then((registration) => {
+              console.log('SW registered: ', registration);
+            })
+            .catch((registrationError) => {
+              console.log('SW registration failed: ', registrationError);
+            });
+        });
+      }
+      
+      // Hide loading spinner when React app mounts
+      window.addEventListener('DOMContentLoaded', () => {
+        setTimeout(() => {
+          document.body.classList.add('app-loaded');
+        }, 1000);
+      });
+      
+      // Prevent zoom on double tap for mobile
+      let lastTouchEnd = 0;
+      document.addEventListener('touchend', function (event) {
+        const now = (new Date()).getTime();
+        if (now - lastTouchEnd <= 300) {
+          event.preventDefault();
+        }
+        lastTouchEnd = now;
+      }, false);
+      
+      // Improve mobile performance
+      document.addEventListener('touchstart', function() {}, {passive: true});
+      document.addEventListener('touchmove', function() {}, {passive: true});
+    </script>
+  </body>
+</html>
+```
