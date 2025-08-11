@@ -1,4 +1,3 @@
-```jsx
 import React, { useRef, useState } from 'react';
 import { Upload, Music, X } from 'lucide-react';
 
@@ -137,4 +136,3 @@ const FileUploader = ({ onFileSelect, currentFile, onClearFile }) => {
 };
 
 export default FileUploader;
-```
