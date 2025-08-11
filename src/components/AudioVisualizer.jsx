@@ -1,4 +1,3 @@
-```jsx
 import React, { useRef, useEffect, useState } from 'react';
 
 const AudioVisualizer = ({ audioRef, isPlaying, className = '' }) => {
@@ -202,4 +201,3 @@ const AudioVisualizer = ({ audioRef, isPlaying, className = '' }) => {
 };
 
 export default AudioVisualizer;
-```
