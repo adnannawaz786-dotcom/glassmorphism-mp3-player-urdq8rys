@@ -1,4 +1,3 @@
-```javascript
 import { useEffect, useRef, useState, useCallback } from 'react';
 
 export const useAudioVisualizer = (audioElement) => {
@@ -232,4 +231,3 @@ export const useAudioVisualizer = (audioElement) => {
 };
 
 export default useAudioVisualizer;
-```
