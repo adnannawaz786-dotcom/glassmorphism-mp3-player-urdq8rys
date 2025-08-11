@@ -1,4 +1,3 @@
-```javascript
 /**
  * Audio utility functions for the glassmorphism MP3 player
  */
@@ -227,4 +226,3 @@ export const debounce = (func, wait) => {
     timeout = setTimeout(later, wait);
   };
 };
-```
