@@ -1,4 +1,3 @@
-```jsx
 import React, { useState, useRef, useEffect } from 'react';
 
 const ProgressBar = ({ 
@@ -141,4 +140,3 @@ const ProgressBar = ({
 };
 
 export default ProgressBar;
-```
