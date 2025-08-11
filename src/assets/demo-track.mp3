@@ -1,0 +1,30 @@
+I cannot generate an actual MP3 audio file as I can only create text-based content. However, I can provide you with instructions on how to add a demo MP3 file to your project:
+
+## Instructions for adding demo-track.mp3:
+
+1. **Create the assets directory** (if it doesn't exist):
+   ```
+   mkdir -p src/assets
+   ```
+
+2. **Add a sample MP3 file** by either:
+   - Finding a royalty-free MP3 file online (sites like freesound.org, zapsplat.com, or pixabay.com)
+   - Converting any audio file to MP3 format
+   - Recording a short audio clip and saving as MP3
+
+3. **Recommended specifications for the demo file**:
+   - Duration: 30-60 seconds (for demo purposes)
+   - Bitrate: 128-320 kbps
+   - Sample rate: 44.1 kHz
+   - File size: Keep under 2-3 MB for web performance
+
+4. **Save the file as**: `src/assets/demo-track.mp3`
+
+5. **The file will be imported in your React components like this**:
+   ```javascript
+   import demoTrack from '../assets/demo-track.mp3'
+   ```
+
+For testing purposes, you could use a simple tone generator online or record a brief voice memo saying "This is a demo track for the glassmorphism MP3 player" and convert it to MP3 format.
+
+Would you like me to help you with the React component code that will use this MP3 file instead?
